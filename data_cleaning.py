@@ -27,7 +27,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # Retail dataset cleaning and EDA
+    # Retail dataset cleaning
     """)
     return
 
@@ -37,6 +37,7 @@ def _():
     import marimo as mo
     import pandas as pd
     import re
+
 
     return mo, pd
 
@@ -51,7 +52,7 @@ def _(mo):
 
 @app.cell
 def _(pd):
-    df = pd.read_csv('data\online_retail_real_world.csv')
+    df = pd.read_csv('data\online_retail_raw.csv')
     df.head(2)
     return (df,)
 
@@ -78,6 +79,12 @@ def _(df):
     return
 
 
+@app.cell
+def _(df):
+    df.columns
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -92,21 +99,52 @@ def _(df):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Changing the missing values in the product and brand name to "Unknown"
+    """)
+    return
+
+
 @app.cell
 def _(df):
     df[['product_name', 'brand']] = df[['product_name', 'brand']].fillna('Unknown')
     return
 
 
-@app.cell
-def _(df):
-    df.raw_weight.nunique()
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Removing emojis from the "product_name" column
+    """)
     return
 
 
 @app.cell
 def _(df):
-    df.shape
+    df['product_name'] = df['product_name'].apply(lambda x: x.encode('ascii', 'ignore').decode('ascii'))
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Removing duplicate, beginning, and ending spaces
+    """)
+    return
+
+
+@app.cell
+def _(df):
+    df['product_name'] = df['product_name'].str.strip().replace(r'\s+',' ', regex=True) \
+                                           .str.capitalize() # single product name
+    return
+
+
+@app.cell
+def _(df):
+    df.isna().sum()
     return
 
 
