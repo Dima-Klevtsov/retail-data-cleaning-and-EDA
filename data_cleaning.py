@@ -116,6 +116,14 @@ def _(df):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    ## Cleaning messy product and brand names
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     Removing emojis from the "product_name" column
     """)
     return
@@ -137,14 +145,101 @@ def _(mo):
 
 @app.cell
 def _(df):
-    df['product_name'] = df['product_name'].str.strip().replace(r'\s+',' ', regex=True) \
-                                           .str.capitalize() # single product name
+    columns_name_change = ['product_name', 'brand'] 
+
+    df[columns_name_change] = df[columns_name_change].apply(
+        lambda x: x.str.strip().replace(r'\s+',' ',regex=True)
+                   .str.capitalize()) # single product and brand name
+    return
+
+
+@app.cell
+def _(df):
+    df.product_name.tolist()
+    return
+
+
+@app.cell
+def _(df):
+    df.product_name.value_counts()
+    return
+
+
+@app.cell
+def _(df):
+    df.brand.value_counts()
+    return
+
+
+@app.cell
+def _(df):
+    df.brand.tolist()
     return
 
 
 @app.cell
 def _(df):
     df.isna().sum()
+    return
+
+
+@app.cell
+def _(df):
+    df.dtypes
+    return
+
+
+@app.cell
+def _(df):
+    df.order_date.value_counts()
+    return
+
+
+@app.cell
+def _(df, pd):
+    df['order_date'] = pd.to_datetime(df['order_date'])
+    return
+
+
+@app.cell
+def _(df):
+    df.dtypes
+    return
+
+
+@app.cell
+def _(df):
+    df.order_date.to_list()
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
     return
 
 
