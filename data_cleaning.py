@@ -37,7 +37,7 @@ def _():
     import marimo as mo
     import pandas as pd
     import re
-
+    import matplotlib.pyplot as plt
 
     return mo, pd
 
@@ -124,7 +124,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Removing emojis from the "product_name" column
+    #### Removing emojis from the "product_name" column
     """)
     return
 
@@ -138,7 +138,7 @@ def _(df):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Removing duplicate, beginning, and ending spaces
+    #### Removing duplicate, beginning, and ending spaces
     """)
     return
 
@@ -190,12 +190,6 @@ def _(df):
 
 
 @app.cell
-def _(df):
-    df.order_date.value_counts()
-    return
-
-
-@app.cell
 def _(df, pd):
     df['order_date'] = pd.to_datetime(df['order_date'])
     return
@@ -207,9 +201,179 @@ def _(df):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Parsing inconsistent quantity formats in raw_weight
+    """)
+    return
+
+
 @app.cell
 def _(df):
-    df.order_date.to_list()
+    df.raw_weight.tolist()
+    return
+
+
+@app.cell
+def _(df):
+    df["raw_weight"] = (df["raw_weight"].str.lower()
+                                        .str.replace("grams", "g")
+                                        .str.replace("gram", "g")
+                                        .str.replace("klg", "kg")
+                       )
+    return
+
+
+@app.cell
+def _(df):
+    df[["value", "unit"]] = df['raw_weight'].str.extract(r'(\d+\.?\d*)\s*(kg|g|ml)')
+    return
+
+
+@app.cell
+def _(df):
+    df.isna().sum()
+    return
+
+
+@app.cell
+def _(df):
+    df.unit.value_counts()
+    return
+
+
+@app.cell
+def _(df):
+    df['value'] = df['value'].astype(float)
+    return
+
+
+@app.cell
+def _(df):
+    df.dtypes
+    return
+
+
+@app.cell
+def _():
+    conversion_weight = {
+        'kg': 1000,
+        'g': 1,
+        'ml': 1  # we don't know the density, so let's leave this assumption
+    }
+    return (conversion_weight,)
+
+
+@app.cell
+def _(conversion_weight, df):
+    df['weight_grams'] = df['value'] * df['unit'].map(conversion_weight)
+    return
+
+
+@app.cell
+def _(df):
+    df['weight_grams'].hist()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Filling in the missing values in the unit_price column
+    """)
+    return
+
+
+@app.cell
+def _(df):
+    df.unit_price.describe()
+    return
+
+
+@app.cell
+def _(df):
+    df.unit_price.isna().mean() 
+    # Output np.float64(0.12833333333333333)
+    return
+
+
+@app.cell
+def _(df):
+    df.unit_price.hist()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Replacing missing values ​​in columns with group means
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #### unit_price
+    """)
+    return
+
+
+@app.cell
+def _(df):
+    df['unit_price'] = df['unit_price'].fillna(df.groupby('brand')['unit_price'].transform('mean'))
+    return
+
+
+@app.cell
+def _(df):
+    df.unit_price.hist()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #### raw_weight
+    """)
+    return
+
+
+@app.cell
+def _(df):
+    df.weight_grams.describe()
+    return
+
+
+@app.cell
+def _(df):
+    df.weight_grams.isna().mean() 
+    # Output np.float64(0.19666666666666666)
+    return
+
+
+@app.cell
+def _(df):
+    df.weight_grams.hist()
+    return
+
+
+@app.cell
+def _(df):
+    df['weight_grams'] = df['weight_grams'].fillna(df.groupby('product_name')['weight_grams'].transform('mean'))
+    return
+
+
+@app.cell
+def _(df):
+    df.weight_grams.hist()
+    return
+
+
+@app.cell
+def _(df):
+    df.isna().mean()
     return
 
 
@@ -218,28 +382,11 @@ def _():
     return
 
 
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _():
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ####
+    """)
     return
 
 

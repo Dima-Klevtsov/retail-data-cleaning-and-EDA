@@ -1,0 +1,459 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.20.2"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "55d1864793f0865620ece6fc2bb687f3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"_1\"></h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "98e642bbb46ff1cd8d1092d0e1e6fb19",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"retail-dataset-cleaning\">Retail dataset cleaning</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "4e225b64732c13f3602d69bcb18a3532",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"import-dataset\">Import dataset</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "a7c1e57600a433c6e5f1f0372f5bf1a8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"change-columns-name-single-format\">Change columns name (single format)</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "0e2b0138e4ba8d2bcd5efda5ec8c31df",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"missing-values\">Missing values</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "c875ff2daf1a4667b63d5e616cc0c54a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Changing the missing values in the product and brand name to \"Unknown\"</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "8743a520123373b385691160c0d72a05",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"cleaning-messy-product-and-brand-names\">Cleaning messy product and brand names</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "7037c377b383bfe2a72a1d54a4c0dd30",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"removing-emojis-from-the-product_name-column\">Removing emojis from the \"product_name\" column</h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "1354b163b79feea324e5c8eb4c69619d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"removing-duplicate-beginning-and-ending-spaces\">Removing duplicate, beginning, and ending spaces</h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "48506335c3876a00f976cc5d874f7aa3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"parsing-inconsistent-quantity-formats-in-raw_weight\">Parsing inconsistent quantity formats in raw_weight</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "9170bb802af3754b5755dda5ae4d4ff6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"filling-in-the-missing-values-in-the-unit_price-column\">Filling in the missing values in the unit_price column</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "f007ba37ce7c68e358c515116dd4d351",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"replacing-missing-values-in-columns-with-group-means\">Replacing missing values \u200b\u200bin columns with group means</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "d33e3595580f3d6cf5efb8a7286c9c2b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"unit_price\">unit_price</h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "2adee045093255927ddeeb1d2a4c20d0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"raw_weight\">raw_weight</h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xvXZ",
+      "code_hash": "9cf8c7578b120179cfb2d2c96d244f19",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"_1\"></h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "5e05757c47df21f9effba0481562bbb0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "f41fc9d6947aa9286233775f48b64749",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-0' random-id='d1e24ac2-b598-885f-a79e-b1fea552f4b7'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;OrderID&#92;&quot;:&#92;&quot;REC-861088&#92;&quot;,&#92;&quot;CustomerID&#92;&quot;:6120,&#92;&quot;ProductName&#92;&quot;:&#92;&quot;Perly&#92;&quot;,&#92;&quot;Brand&#92;&quot;:&#92;&quot;Perly&#92;&quot;,&#92;&quot;Raw_Weight&#92;&quot;:&#92;&quot;100 g&#92;&quot;,&#92;&quot;Country&#92;&quot;:&#92;&quot;Morocco,United States&#92;&quot;,&#92;&quot;OrderDate&#92;&quot;:&#92;&quot;2024-02-22&#92;&quot;,&#92;&quot;UnitPrice&#92;&quot;:13.18},{&#92;&quot;OrderID&#92;&quot;:&#92;&quot;REC-900952&#92;&quot;,&#92;&quot;CustomerID&#92;&quot;:12550,&#92;&quot;ProductName&#92;&quot;:&#92;&quot;Prince Go&#92;&#92;u00fbt Chocolat&#92;&quot;,&#92;&quot;Brand&#92;&quot;:&#92;&quot;LU&#92;&quot;,&#92;&quot;Raw_Weight&#92;&quot;:&#92;&quot;300 g&#92;&quot;,&#92;&quot;Country&#92;&quot;:&#92;&quot;Algeria,Belgium,France,French Polynesia,Germany,Guadeloupe,Hungary,Luxembourg,Martinique,Morocco,New Caledonia,R&#92;&#92;u00e9union,Spain,Switzerland,United States&#92;&quot;,&#92;&quot;OrderDate&#92;&quot;:&#92;&quot;2024-11-13&#92;&quot;,&#92;&quot;UnitPrice&#92;&quot;:1.5}]&quot;' data-total-rows='2' data-total-columns='8' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;OrderID&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;CustomerID&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;ProductName&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Brand&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Raw_Weight&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Country&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;OrderDate&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;UnitPrice&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "0d8d07ddb094f82646c2d62707f348bf",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "06d2e4a8a9c2f5ed4cdbfd5df1b073fe",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "0d8d07ddb094f82646c2d62707f348bf",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "b812f2374fd66b9e9c3f23e6c0543c67",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "e10246b56051478420c09fc3f1c4433d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "2cb0f7646931ad1309513de261b716dc",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "0c4b4de9fcfcef0c6167121b4c2ac22d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "e2d08fb932c5d15a44dfaf76db712dc9",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "22a8dacffd19f9facf660a47fe7075db",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "fff55849f6382c29deb96a14678339be",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "6c3beb531e959910a5362c816c795538",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "b812f2374fd66b9e9c3f23e6c0543c67",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "2760d6b6fc5eba833e9e65f5fdfb0750",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "4e5b16d45b8830ccf7e856062f11cc6f",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "2760d6b6fc5eba833e9e65f5fdfb0750",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "59010da323cfb32454fa8f57fd811ec1",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "444752d9ad593db020346f24f60862ee",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "e11237272571c0e45a25252f2eca9d35",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "b812f2374fd66b9e9c3f23e6c0543c67",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "c03fcd00d5729dfad3b7fc067b573a9c",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "78ffaefe5395feb7234d6c99e4bdcf71",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "2760d6b6fc5eba833e9e65f5fdfb0750",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "2746b407bc564fe6eda0c2de28194197",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "d0f96b6348fdf548879a7faf7b0d1a67",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "94d8b2e199c418289ff8e938f3b193a5",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "b359edd475713969956f4c12ec9caffa",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "c6140c831baafa9e4e85c9122dca2d5a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "45194f2ddcb23ca4618fade95313169b",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "451e4468ffc461f867bb78db5295abdb",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "45194f2ddcb23ca4618fade95313169b",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "4cf2e80a170c6dd16ed744beabf53ee8",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "jxvo",
+      "code_hash": "288688910c0643fe76b5e4f065f79954",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "'DataFrame' object has no attribute 'weight_grams'",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\dimul\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">139</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">eval</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">last_expr</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\dimul\\AppData\\Local\\Temp\\marimo_15700\\__marimo__cell_jxvo_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">df</span><span class=\"o\">.</span><span class=\"n\">weight_grams</span><span class=\"o\">.</span><span class=\"n\">isna</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">mean</span><span class=\"p\">()</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\dimul\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pandas\\core\\generic.py&quot;</span>, line <span class=\"m\">6206</span>, in <span class=\"n\">__getattr__</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">object</span><span class=\"o\">.</span><span class=\"fm\">__getattribute__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">name</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^</span>\n<span class=\"gr\">AttributeError</span>: <span class=\"n\">&#39;DataFrame&#39; object has no attribute &#39;weight_grams&#39;</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "mWxS",
+      "code_hash": "deee41b78aa7d58dc2039eb5cd4da539",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "CcZR",
+      "code_hash": "ed104ba0e5ad3c014dafc8376f6e33e8",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "YWSi",
+      "code_hash": "deee41b78aa7d58dc2039eb5cd4da539",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "zlud",
+      "code_hash": "f6b161b7340535a9a4bfd6b53445edca",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
